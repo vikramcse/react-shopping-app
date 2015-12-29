@@ -1,19 +1,16 @@
 var React = require('react');
+
 var Item = React.createClass({
-    getInitialState: function() {
-        return {
-            image: "http://placehold.it/300x300",
-            title: "This is a Title",
-            price: "$400"
-        };
+    buyProduct: function() {
+        alert("bought");
     },
     render() {
         return (
             <div className="column">
-                <img className="thumbnail" src={this.state.image}/>
-                <h5>{this.state.title}</h5>
-                <p>{this.state.price}</p>
-                <a href="#" className="button small expanded hollow">Buy</a>
+                <img className="thumbnail" src={this.props.image}/>
+                <h5>{this.props.title}</h5>
+                <p>{this.props.price}</p>
+                <a onClick={this.buyProduct} className="button expanded">Buy</a>
             </div>
         );
     }
