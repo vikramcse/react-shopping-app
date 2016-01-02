@@ -1,6 +1,7 @@
 var React = require('react');
 var ItemList = require('./ItemList.js');
 var Firebase = require("firebase");
+var Link = require('react-router').Link;
 
 var App =  React.createClass({
 	componentDidMount: function() {
@@ -38,7 +39,8 @@ var App =  React.createClass({
 				<div className="top-bar">
 					<div className="top-bar-left">
 						<ul className="menu">
-							<li className="menu-text">Shopping Site</li>
+							<li className="menu-text"><Link to="/">Shopping Site</Link></li>
+							<li><Link to="/admin">Admin</Link></li>
 						</ul>
 					</div>
 				</div>
