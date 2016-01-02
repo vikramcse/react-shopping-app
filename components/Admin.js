@@ -1,7 +1,14 @@
 var React = require('react');
+var Login = require('./Login.js');
 var Link = require('react-router').Link;
+var ref = new Firebase("zenleather.firebaseio.com");
 
 var Admin = React.createClass({
+	getInitialState: function() {
+		return {
+			loggedIn: false
+		};
+	},
     render() {
 		return (
 			<div>
@@ -14,7 +21,7 @@ var Admin = React.createClass({
 					</div>
 				</div>
 				<br/>
-				<h1>Admin</h1>
+				<Login />
 			</div>
 		)
 	}
