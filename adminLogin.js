@@ -61,6 +61,10 @@ router.get('/login', function(req, res) {
     res.render('login');
 });
 
+router.get('/products', function(req, res) {
+    res.render('index');
+});
+
 router.post('/signup', function(req, res) {
 	User.findOne({'username': req.body.username}, function(err, user) {
 		if(err) {

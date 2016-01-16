@@ -9,8 +9,9 @@ var port = 7777;
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 app.use(login.routes);
+app.use(require('./product'));
 app.get('*', login.required, function(req, res) {
-    res.render('index', {
+    res.render('dash', {
         user: req.user
     });
 });
