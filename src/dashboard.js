@@ -1,4 +1,17 @@
 var React = require('react');
-var DashApp = require('./components/dashboard/DashApp.js');
+var ReactRouter = require('react-router');
+var Route = ReactRouter.Route;
+var Layout = require('./components/dashboard/Layout.js');
+var AddProduct = require('./components/dashboard/AddProduct.js');
+var Orders = require('./components/dashboard/Orders.js');
 
-React.render(<DashApp />, document.getElementById('dashboard'));
+var routes = (
+	<Route handler={Layout}>
+		<Route name="addProduct" path="/addProduct" handler={AddProduct}/>
+        <Route name="orders" path="/orders" handler={Orders}/>
+	</Route>
+);
+
+ReactRouter.run(routes, ReactRouter.HistoryLocation, function(Root) {
+    React.render(<Root />, document.getElementById('dashboard'));
+});
