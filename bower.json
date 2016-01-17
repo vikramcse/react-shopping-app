@@ -1,0 +1,23 @@
+{
+  "name": "shopping-app",
+  "description": "",
+  "main": "main.js",
+  "authors": [
+    "Vikram Jadhav"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vikramcse/react-shopping-app",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
