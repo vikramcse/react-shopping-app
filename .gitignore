@@ -28,3 +28,5 @@ node_modules
 config.local.js
 public/dash.js
 public/front.js
+public/lib/bootstrap
+public/lib/jquery
