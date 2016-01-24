@@ -2,6 +2,7 @@ var React = require('react');
 var AppStore = require('../../../front/stores/app-store.js');
 var AppActions = require('../../../front/actions/app-actions.js');
 var AddToCart = require('../cart/AddToCart.js');
+var CatalogItem = require('./CatalogItem.js');
 
 var Catalog =
     React.createClass({
@@ -24,24 +25,17 @@ var Catalog =
                 items: AppStore.getCatalog()
             });
         },
-        render:function(){
-            if (this.state.items) {
-                var items = this.state.items.map(function(item){
-                    return (
-                        <tr>
-                            <td>{item.title}</td>
-                            <td>${item.cost}</td>
-                            <td><AddToCart item={item} /></td>
-                        </tr>
-                    )
-                })
-            }
+        render:function() {
+            var items = this.state.items.map(function(item){
+                return (
+                    <CatalogItem item={item}/>
+                )
+            })
+
             return (
-                <table className="table table-hover">
-                    <tbody>
-                        {items}
-                    </tbody>
-               </table>
+                <div className="row">
+                    {items}
+                </div>
             )
         }
     });

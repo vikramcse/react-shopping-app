@@ -3,21 +3,17 @@ var AppStore = require('../../../front/stores/app-store.js');
 var RemoveFromCart = require('./RemoveFromCart.js');
 var Increase = require('./Increase.js');
 var Decrease = require('./Decrease.js');
+var AppStore = require('../../../front/stores/app-store.js');
+var StoreWatchMixin = require('../mixins/StoreWatchMixin.js');
+var Link = require('react-router').Link;
 
+function cartItems(){
+  return {
+      items: AppStore.getCart()
+  }
+}
 var Cart = React.createClass({
-    getInitialState: function() {
-        return {
-            items: AppStore.getCart()
-        };
-    },
-    componentWillMount: function() {
-        AppStore.addChangeListener(this._onChange);
-    },
-    _onChange: function() {
-        this.setState({
-            items: AppStore.getCart()
-        });
-    },
+    mixins:[StoreWatchMixin(cartItems)],
     render:function(){
         var total = 0;
         var items = this.state.items.map(function(item, i){
@@ -37,26 +33,29 @@ var Cart = React.createClass({
             );
         })
         return (
-            <table className="table table-hover">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Item</th>
-                        <th>Qty</th>
-                        <th></th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {items}
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colSpan="4" className="text-right">Total</td>
-                        <td>${total}</td>
-                    </tr>
-                    </tfoot>
-            </table>
+            <div>
+                <table className="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Item</th>
+                            <th>Qty</th>
+                            <th></th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {items}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colSpan="4" className="text-right">Total</td>
+                            <td>${total}</td>
+                        </tr>
+                        </tfoot>
+                </table>
+                <Link to="catalog">Continue Shopping</Link>
+            </div>
         )
     }
 });
