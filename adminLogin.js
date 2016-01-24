@@ -61,9 +61,9 @@ router.get('/login', function(req, res) {
     res.render('login');
 });
 
-router.get('/products', function(req, res) {
-    res.render('index');
-});
+// router.get('/', function(req, res) {
+//     res.render('index');
+// });
 
 router.post('/signup', function(req, res) {
 	User.findOne({'username': req.body.username}, function(err, user) {
@@ -88,11 +88,11 @@ router.post('/signup', function(req, res) {
 
 			newUser.save(function(err) {
 				if(err) {
-					console.log('Error in Saving user: '+err);  
+					console.log('Error in Saving user: '+err);
               		return next(err);
 				} else {
 					console.log('User Registration succesful');
-					res.redirect('/');
+					res.redirect('/dash');
 				}
 			});
 		} else {
@@ -103,7 +103,7 @@ router.post('/signup', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/dash',
     failureRedirect: '/login'
 }));
 

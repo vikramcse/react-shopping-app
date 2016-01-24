@@ -10,10 +10,14 @@ app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 app.use(login.routes);
 app.use(require('./product'));
-app.get('*', login.required, function(req, res) {
+app.get('/dash', login.required, function(req, res) {
     res.render('dash', {
         user: req.user
     });
+});
+
+app.get('*', function(req, res) {
+    res.render('index');
 });
 
 app.listen(port, function() {
